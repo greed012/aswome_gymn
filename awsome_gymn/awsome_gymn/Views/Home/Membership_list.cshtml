@@ -1,0 +1,45 @@
+﻿@model IEnumerable<awsome_gymn.Models.membership>
+
+@{
+    ViewBag.Title = "Membership_List";
+}
+
+<!-- Page Header -->
+<header class="jumbotron jumbotron-fluid mb-3">
+    <div class="container text-center">
+        <h1 class="display-4">Memberships</h1>
+        <p class="lead">Explore our membership options.</p>
+    </div>
+</header>
+
+<div class="row mr-5 ml-5 mt-5">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (item.Image != null && item.Image.Length > 0)
+                {
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Image)" alt="Membership Image" class="card-img-top" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-muted">Price: @Html.DisplayFor(modelItem => item.Price)</div>
+                    <div class="text-muted">Duration: @Html.DisplayFor(modelItem => item.DurationMonths) months</div>
+                    <div class="float-right">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Join now", "create", "membership_enrollment", new { id = item.Id }, new { @class = "btn btn-primary" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Join", "Login", "Account", new { ReturnUrl = Url.Action("create", "membership_enrollment", new { id = item.Id }) }, new { @class = "btn btn-primary" })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

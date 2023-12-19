@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<!-- Page Header -->
+<header class="jumbotron jumbotron-fluid mb-3">
+    <div class="container text-center">
+        <h1 class="display-4">Contact Us</h1>
+        <p class="lead">Get in touch and we'll get back to you as soon as possible.</p>
+    </div>
+</header>
+
+<!-- Contact Form -->
+<section class="container">
+    <div class="row">
+        <div class="col-md-8 mb-5">
+            <h2>Send Us a Message</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-md-4">
+            <h3>Contact Information</h3>
+            <p>
+                555 Gym St.<br>
+                Gym City, GT 12345
+            </p>
+            <p>
+                Phone: 555-123-4567<br>
+                Email: info@gymname.com
+            </p>
+            <p>
+                Hours:<br>
+                Mon - Fri: 6am - 9pm<br>
+                Sat - Sun: 8am - 8pm
+            </p>
+        </div>
+
+    </div>
+</section>

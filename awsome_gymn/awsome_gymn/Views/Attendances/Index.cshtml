@@ -1,0 +1,66 @@
+﻿@model IEnumerable<awsome_gymn.Models.Attendance>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/dashboard_layout.cshtml";
+}
+
+<h2>Attendance List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Class.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingSession.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttendanceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th>
+            Presence Status
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingSession.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @if (item.IsPresent)
+                {
+                    <span class="text-success">Present</span>
+                }
+                else
+                {
+                    <span class="text-success">Present</span>
+                }
+            </td>
+            <td>
+             
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

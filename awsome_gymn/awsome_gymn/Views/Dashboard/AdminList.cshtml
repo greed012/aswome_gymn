@@ -1,0 +1,43 @@
+﻿@model IEnumerable<awsome_gymn.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/dashboard_layout.cshtml";
+}
+
+<h2>UserList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateUser")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordHash)
+            </td>
+            <td>
+            <td>
+
+                @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }) |
+                @Html.ActionLink("Details", "UserDetails", new { id = item.Id })
+            </td>
+
+        </tr>
+    }
+
+</table>

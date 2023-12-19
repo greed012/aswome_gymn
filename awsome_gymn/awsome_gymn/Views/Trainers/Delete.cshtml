@@ -1,0 +1,60 @@
+﻿@model awsome_gymn.Models.Trainer
+
+@{
+    Layout = "~/Views/shared/dashboard_layout.cshtml";
+}
+
+<h2>Delete Trainer</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Trainer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Image
+        </dt>
+        <dd>
+            @if (Model.Image != null && Model.Image.Length > 0)
+            {
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" alt="Class Image" width="200" />
+            }
+            else
+            {
+                <span>No Image</span>
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FbLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FbLink)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InstaLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InstaLink)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TwitterLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TwitterLink)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

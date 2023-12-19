@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNet.Identity
+
+@model awsome_gymn.Models.DashboardViewModel
+
+@{
+    Layout = "/Views/Shared/dashboard_layout.cshtml";
+}
+
+@if (Request.IsAuthenticated)
+{
+
+
+    <div class="container mt-5">
+        <h2>Dashboard</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card border-primary text-center">
+                    <div class="card-header bg-primary text-white">
+                        <i class="far fa-clipboard"></i> Classes
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.ClassCount</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card border-success text-center">
+                    <div class="card-header bg-success text-white">
+                        <i class="far fa-users"></i> Total Users
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.UserCount</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card border-warning text-center">
+                    <div class="card-header bg-warning text-white">
+                        <i class="far fa-user"></i> Admins
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.AdminCount</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card border-info text-center">
+                    <div class="card-header bg-info text-white">
+                        <i class="far fa-user-tie"></i> Trainers
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.TrainerCount</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

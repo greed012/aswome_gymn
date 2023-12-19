@@ -1,0 +1,58 @@
+﻿@model awsome_gymn.Models.Trainer
+
+@{
+    Layout = "~/Views/shared/dashboard_layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trainer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FbLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FbLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstaLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstaLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwitterLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwitterLink)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

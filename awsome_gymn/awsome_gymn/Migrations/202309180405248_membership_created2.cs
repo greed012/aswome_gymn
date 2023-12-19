@@ -1,0 +1,30 @@
+namespace awsome_gymn.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class membership_created2 : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.memberships",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Description = c.String(),
+                        Image = c.Binary(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        DurationMonths = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropTable("dbo.memberships");
+        }
+    }
+}

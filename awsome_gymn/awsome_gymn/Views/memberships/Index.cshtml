@@ -1,0 +1,39 @@
+﻿@model IEnumerable<awsome_gymn.Models.membership>
+
+@{
+    ViewBag.Title = "Membership List";
+    Layout = "~/Views/Shared/dashboard_layout.cshtml";
+}
+
+<h2>Membership List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (item.Image != null && item.Image.Length > 0)
+                {
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Image)" alt="Membership Image" class="card-img-top" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-muted">Price: @Html.DisplayFor(modelItem => item.Price)</div>
+                    <div class="text-muted">Duration: @Html.DisplayFor(modelItem => item.DurationMonths) months</div>
+                    <div class="float-right">
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

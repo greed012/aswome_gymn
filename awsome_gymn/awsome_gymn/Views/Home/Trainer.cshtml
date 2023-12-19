@@ -1,0 +1,50 @@
+﻿@model IEnumerable<awsome_gymn.Models.Trainer>
+
+@{
+    ViewBag.Title = "Trainer";
+}
+
+<!-- Page Header -->
+<header class="jumbotron jumbotron-fluid mb-3">
+    <div class="container text-center">
+        <h1 class="display-4">Our Trainers</h1>
+        <p class="lead">Meet our qualified, experienced fitness trainers.</p>
+    </div>
+</header>
+
+
+<!-- Trainers Section -->
+<section class="container">
+    <div class="row">
+        @foreach (var trainer in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="data:image/jpeg;base64,@Convert.ToBase64String(trainer.Image)" alt="Trainer Image">
+                    <div class="card-body">
+                        <h4 class="card-title">@trainer.Name</h4>
+                        <div class="d-flex justify-content-center pt-4">
+                            @if (!string.IsNullOrEmpty(trainer.FbLink))
+                            {
+                                <a href="@trainer.FbLink" class="text-dark"><i class="fa-brands fa-facebook fa-2x mr-3 ml-3"></i></a>
+                            }
+                            @if (!string.IsNullOrEmpty(trainer.InstaLink))
+                            {
+                                <a href="@trainer.InstaLink" class="text-dark"><i class="fa-brands fa-instagram fa-2x mr-3 ml-3"></i></a>
+                            }
+                            @if (!string.IsNullOrEmpty(trainer.TwitterLink))
+                            {
+                                <a href="@trainer.TwitterLink" class="text-dark"><i class="fa-brands fa-twitter fa-2x mr-3 ml-3"></i></a>
+                            }
+                        </div>
+                        <div class="d-flex justify-content-center pt-4">
+                            <a href="#" class="text-warning">View Profile</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        }
+    </div>
+</section>
+

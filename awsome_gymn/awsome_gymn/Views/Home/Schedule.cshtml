@@ -1,0 +1,57 @@
+﻿@model IEnumerable<awsome_gymn.Models.TrainingSession>
+
+@{
+    ViewBag.Title = "Schedule";
+}
+
+<!-- Page Header -->
+<header class="jumbotron jumbotron-fluid mb-3">
+    <div class="container text-center">
+        <h1 class="display-4">Schedules</h1>
+        <p class="lead">View our class schedules and make your workout plan.</p>
+    </div>
+</header>
+
+<table class="table ml-5 mr-5">
+<tr>
+    <th>
+        Class Name
+    </th>
+    <th>
+        Trainer Name
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Time)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Group)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Duration)
+    </th>
+    <th></th>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trainer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)hour
+        </td>
+        
+    </tr>
+}
+
+</table>

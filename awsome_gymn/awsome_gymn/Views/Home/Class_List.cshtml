@@ -1,0 +1,60 @@
+﻿@model IEnumerable<awsome_gymn.Models.Class>
+
+@{
+    ViewBag.Title = "Class_List";
+}
+
+<!-- Page Header -->
+<header class="jumbotron jumbotron-fluid mb-3">
+    <div class="container text-center">
+        <h1 class="display-4">Classes</h1>
+        <p class="lead">Check out all the great classes we offer!</p>
+    </div>
+</header>
+
+
+
+
+
+    <div class="row mr-5 ml-5 mt-5">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    @if (item.Image != null && item.Image.Length > 0)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Image)" alt="Class Image" class="card-img-top" />
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-muted">Last updated 3 mins ago</div>
+                        <div class="float-right">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Enroll now", "Create", "Enrollments", null, new { @class = "btn btn-primary" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Enroll now", "Login", "Account", new { ReturnUrl = Url.Action("Create", "Enrollments") }, new { @class = "btn btn-primary" })
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+
+</div>
+<br />
+<br />
+
+
+

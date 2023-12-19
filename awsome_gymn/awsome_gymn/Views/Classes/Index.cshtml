@@ -1,0 +1,38 @@
+﻿@model IEnumerable<awsome_gymn.Models.Class>
+
+@{
+    ViewBag.Title = "Class List";
+    Layout = "~/Views/shared/dashboard_layout.cshtml";
+}
+
+<h2>Class List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (item.Image != null && item.Image.Length > 0)
+                {
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Image)" alt="Class Image" class="card-img-top" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-muted">Last updated 3 mins ago</div>
+                    <div class="float-right">
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
